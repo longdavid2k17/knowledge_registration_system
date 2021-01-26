@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Junior JAVA Developer Scholarships</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<div class="menu">
+    <ul>
+        <li><a href="#home">O szkoleniach</a></li>
+        <li><a href="#scholarships">Dostępne szkolenia</a></li>
+        <li><a href="#about">O mnie</a></li>
+    </ul>
+</div>
+
+<br/>
+<div id="home">
+    <div id="mainData">
+        <h2>Szkolenia dedykowane dla przyszłych programistów</h2>
+        <h3>Anarchia Developers</h3>
+        <h1>Poznawaj nowe umiejętności, które przydadzą się w twojej wymarzonej pracy.</h1>
+    </div>
+</div>
+<br/>
+<hr>
+<br/>
+<div id="scholarships">
+    <h3><strong>Dostępne szkolenia</strong></h3>
+
+    <div class="scholarship">
+        Szkolenie MySQL<br>
+        <a th:href="@{/scholarship/mysql}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+    <div class="scholarship">
+        Szkolenie Spring Framework<br>
+        <a th:href="@{/scholarship/spring}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+    <div class="scholarship">
+        Szkolenie Wzorce projektowe<br>
+        <a th:href="@{/scholarship/patterns}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+    <div class="scholarship">
+        Szkolenie Algorytmika<br>
+        <a th:href="@{/scholarship/algorithms}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+    <div class="scholarship">
+        Szkolenie Hibernate<br>
+        <a th:href="@{/scholarship/hibernate}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+    <div class="scholarship">
+        Szkolenie HTML/CSS<br>
+        <a th:href="@{/scholarship/htmlcss}">
+            <button>Zapisz się!</button>
+        </a>
+        <br/>
+    </div>
+</div>
+<br/>
+<hr>
+<br/>
+<div id="about">
+    <h2>O mnie</h2>
+    Jestem Dawid.
+</div>
+<br/><br/><br/><br/>
+<div class="footer">
+    Autorem strony oraz szkoleń jest Dawid Kańtoch. Wszelkie prawa zastrzeżone. &reg 2021
+</div>
+</body>
+</html>
