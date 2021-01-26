@@ -49,4 +49,14 @@ public class User
     public String getInterestedAt() {
         return interestedAt;
     }
+
+    public Long getUserId()
+    {
+        return userId;
+    }
+
+    public void setUserId(Long userId)
+    {
+        this.userId = userId;
+    }
 }

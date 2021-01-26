@@ -5,10 +5,10 @@ import lombok.Data;
 import java.util.Date;
 
 @Data
-public class ScholarshipRegistration
+public class Scholarship
 {
-    private long registrationId;
-    private Date placedAt;
-    private long userId;
     private long scholarshipId;
+    private Date takePlace;
+    private String scholarshipName;
+    private String description;
 }
