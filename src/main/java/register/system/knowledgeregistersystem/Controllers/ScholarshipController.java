@@ -79,7 +79,6 @@ public class ScholarshipController
         log.info("Przetwarzanie "+user);
         User savedUser = userRepository.save(user);
         scholarshipRegistration.setRegisteredUser(savedUser);
-        //sendEmail(contact);
         //return "redirect:/finished";
         return "redirect:/scholarship/registered";
     }

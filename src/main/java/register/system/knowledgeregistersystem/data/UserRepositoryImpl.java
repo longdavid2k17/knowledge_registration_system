@@ -27,22 +27,25 @@ public class UserRepositoryImpl implements UserRepository
     @Override
     public User save(User user)
     {
-        saveUser(user);
-        user.setUserId((long) 2);
-        log.info("Przetworzono "+user);
+        long userId = saveUser(user);
+        user.setUserId(userId);
+        log.info("Zapisano "+user);
         return user;
     }
 
-    private boolean saveUser(User user)
+    private long saveUser(User user)
     {
         user.setCreatedAt(new Date());
         KeyHolder keyHolder = new GeneratedKeyHolder();
-        PreparedStatementCreator psc = new PreparedStatementCreatorFactory(
-                        "insert into Users (createdAt, name, email) values (?,?,?)", Types.TIMESTAMP,Types.VARCHAR,Types.VARCHAR
-                ).newPreparedStatementCreator(
-                        Arrays.asList(
-                                new Timestamp(user.getCreatedAt().getTime()),user.getName(),user.getEmail()));
-        jdbc.update(psc, keyHolder);
-        return true;
+        PreparedStatementCreatorFactory preparedStatementCreatorFactory = new PreparedStatementCreatorFactory(
+                "insert into Users (createdAt, name, email) values (?,?,?)",
+                Types.TIMESTAMP,Types.VARCHAR,Types.VARCHAR);
+        preparedStatementCreatorFactory.setReturnGeneratedKeys(true);
+        PreparedStatementCreator psc =
+                preparedStatementCreatorFactory.newPreparedStatementCreator(
+                        Arrays.asList(new Timestamp(user.getCreatedAt().getTime()),user.getName(),user.getEmail()));
+        jdbc.update(psc,keyHolder);
+
+        return keyHolder.getKey().longValue();
     }
 }
