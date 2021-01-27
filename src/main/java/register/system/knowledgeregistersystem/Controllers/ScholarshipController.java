@@ -1,12 +1,16 @@
 package register.system.knowledgeregistersystem.Controllers;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import register.system.knowledgeregistersystem.Models.ScholarshipRegistration;
 import register.system.knowledgeregistersystem.Models.User;
+import register.system.knowledgeregistersystem.data.UserRepository;
 
 import javax.validation.Valid;
 
@@ -14,7 +18,14 @@ import javax.validation.Valid;
 @RequestMapping("/scholarship")
 public class ScholarshipController
 {
+    private final UserRepository userRepository;
     private static final org.slf4j.Logger log = org.slf4j.LoggerFactory.getLogger(ScholarshipController.class);
+
+    @Autowired
+    public ScholarshipController(UserRepository userRepository)
+    {
+        this.userRepository = userRepository;
+    }
 
     @RequestMapping(value = "/mysql", method = RequestMethod.GET)
     public String mysql(Model model)
@@ -59,16 +70,18 @@ public class ScholarshipController
     }
 
     @PostMapping
-    public String processRegistration(@Valid User user, Errors errors)
+    public String processRegistration(@Valid User user, Errors errors, @ModelAttribute ScholarshipRegistration scholarshipRegistration)
     {
         if(errors.hasErrors())
         {
             return "/scholarships/"+user.getInterestedAt();
         }
         log.info("Przetwarzanie "+user);
+        User savedUser = userRepository.save(user);
+        scholarshipRegistration.setRegisteredUser(savedUser);
         //sendEmail(contact);
         //return "redirect:/finished";
-        return "redirect:/";
+        return "redirect:/scholarship/registered";
     }
 
 }

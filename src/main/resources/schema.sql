@@ -1,5 +1,5 @@
 create table if not exists Users (
-  id varchar(4) not null,
+  id identity,
   createdAt timestamp not null,
   name varchar(30) not null,
   email varchar(30) not null
