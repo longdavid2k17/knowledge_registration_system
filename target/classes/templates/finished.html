@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Zarejestrowano na wydarzenie</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<p>Dziękujemy za zainteresowanie wydarzeniem oznaczone tajemniczo </p>
+<b><tr>
+    <td th:text="${user.interestedAt}"></td>
+</tr>
+</b>
+<p>Potwierdź rejestrację klikając w link który przesłaliśmy w mailu. Do zobaczenia!</p>
+
+<div class="footer">
+    Autorem strony oraz szkoleń jest Dawid Kańtoch. Wszelkie prawa zastrzeżone. &reg 2021
+</div>
+</body>
+</html>

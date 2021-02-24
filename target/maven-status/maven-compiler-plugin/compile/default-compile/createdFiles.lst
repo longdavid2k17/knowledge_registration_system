@@ -1,0 +1,10 @@
+register\system\knowledgeregistersystem\Controllers\HomeController.class
+register\system\knowledgeregistersystem\Services\MailService.class
+register\system\knowledgeregistersystem\Controllers\ScholarshipController.class
+register\system\knowledgeregistersystem\KnowledgeRegisterSystemApplication.class
+register\system\knowledgeregistersystem\Models\Scholarship.class
+register\system\knowledgeregistersystem\Models\User.class
+register\system\knowledgeregistersystem\Controllers\RegisteredController.class
+register\system\knowledgeregistersystem\data\UserRepository.class
+register\system\knowledgeregistersystem\data\UserRepositoryImpl.class
+register\system\knowledgeregistersystem\Models\ScholarshipRegistration.class
