@@ -8,6 +8,7 @@ create table if not exists Users (
 create table if not exists Scholarships (
   id varchar(4) not null,
   takePlace timestamp not null,
+  codeName varchar(30) not null,
   scholarshipName varchar(30) not null,
   description varchar(60) not null
 );

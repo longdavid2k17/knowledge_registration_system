@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 import register.system.knowledgeregistersystem.Models.User;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
 import java.util.Arrays;
@@ -31,6 +33,30 @@ public class UserRepositoryImpl implements UserRepository
         user.setUserId(userId);
         log.info("Zapisano "+user);
         return user;
+    }
+
+    public User mapRow(ResultSet rs, int rowNum) throws SQLException {
+        User user = new User();
+
+        user.setUserId(rs.getLong("ID"));
+        user.setEmail(rs.getString("FIRST_NAME"));
+        user.setCreatedAt(rs.getDate("LAST_NAME"));
+        user.setInterestedAt(rs.getString("ADDRESS"));
+
+        return user;
+    }
+
+    public User getUser(String email, String interestedIn)
+    {
+        String sql = "SELECT * FROM USERS WHERE EMAIL = ?";
+        return jdbc.queryForObject(sql, new Object[]{email}, (rs, rowNum) ->
+                new User(
+                        rs.getLong("id"),
+                        rs.getDate("createdAt"),
+                        rs.getString("name"),
+                        rs.getString("email"),
+                        interestedIn
+                ));
     }
 
     @Override

@@ -9,6 +9,7 @@ public class Scholarship
 {
     private long scholarshipId;
     private Date takePlace;
+    private String codeName;
     private String scholarshipName;
     private String description;
 }
