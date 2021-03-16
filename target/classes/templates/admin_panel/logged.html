@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Panel administracyjny</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<a th:href="@{/admin/events}"><button>Zarządzaj wydarzeniami</button></a><br/><br/>
+<a th:href="@{/admin/users}"><button>Podgląd uczestników</button></a><br/><br/>
+<a th:href="@{/admin/sendEmail}"><button>Wyślij email do uczestników</button></a><br/><br/>
+<a th:href="@{/admin/addAdmin}"><button>Dodaj konto administratora</button></a><br/><br/>
+
+<br/>
+<br/>
+<a th:href="@{/admin/logout}"><button>Wyloguj się</button></a>
+<br/>
+<br/>
+<div class="footer">
+    Autorem strony oraz szkoleń jest Dawid Kańtoch. Wszelkie prawa zastrzeżone. &reg 2021
+</div>
+</body>
+</html>

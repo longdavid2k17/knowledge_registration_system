@@ -194,3 +194,7 @@ input[type="submit"]:active {
     background: hsl(var(--fgColorH), calc(var(--fgColorS) * 2), calc(var(--fgColorL) * 1.15));
     transition: all 0.125s;
 }
+
+table, th, td {
+    border: 1px solid black;
+}

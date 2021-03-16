@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Wydarzenia</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Data </th>
+        <th> Nazwa kodowa </th>
+        <th> Nazwa </th>
+        <th> Opis </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${scholarships.empty}">
+        <td colspan="5"> Brak wydarzeń </td>
+    </tr>
+    <tr th:each="scholarship : ${scholarships}">
+        <td><span th:text="${scholarship.scholarshipId}">ID </span></td>
+        <td><span th:text="${scholarship.takePlace}">Data </span></td>
+        <td><span th:text="${scholarship.codeName}">Nazwa kodowa </span></td>
+        <td><span th:text="${scholarship.scholarshipName}">Nazwa</span></td>
+        <td><span th:text="${scholarship.description}">Opis </span></td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/admin}"><button>Wróć do panelu</button></a>
+
+</body>
+</html>

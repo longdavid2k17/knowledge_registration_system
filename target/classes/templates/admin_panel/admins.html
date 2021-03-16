@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dodaj administratora</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<form method="POST" th:action="@{/admin/addAdmin}" th:object="${admin}" >
+    <div th:if="${#fields.hasErrors()}">
+        <span class="validationError">
+        Please correct the problems below and resubmit.
+        </span>
+    </div>
+    <span class="required">Login</span>
+    <input type="text" th:field="*{username}" required>
+    <span class="required">Hasło</span>
+    <input type="password" th:field="*{password}" required>
+    <span class="required">ROLE</span>
+    <input type="text" th:field="*{role}" value="ROLE_ADMIN" >
+    <input type="submit" value="Zapisz konto">
+</form>
+
+<div class="footer">
+    Autorem strony oraz szkoleń jest Dawid Kańtoch. Wszelkie prawa zastrzeżone. &reg 2021
+</div>
+</body>
+</html>

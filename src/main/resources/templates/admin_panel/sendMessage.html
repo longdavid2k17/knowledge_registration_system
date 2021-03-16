@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Wyślij wiadomość</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<center>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Data </th>
+        <th> UserID </th>
+        <th> ScholarshipID </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${registrations.empty}">
+        <td colspan="5"> Brak wydarzeń </td>
+    </tr>
+    <tr th:each="registration : ${registrations}">
+        <td><span th:text="${registration.registrationId}">ID </span></td>
+        <td><span th:text="${registration.placedAt}">Data </span></td>
+        <td><span th:text="${registration.userId}">ID użytkownika </span></td>
+        <td><span th:text="${registration.scholarshipId}">ID wydarzenia</span></td>
+    </tr>
+    </tbody>
+</table>
+</center>
+<br/>
+<div class="scholarship">
+    <tr th:each="scholarship : ${scholarshipList}">
+        <td><span th:text="${scholarship.scholarshipName}">ID </span></td>
+        <td><a th:href="@{/admin/sendEmail/{scholarshipId}(scholarshipId=${scholarship.scholarshipId})}">Filtruj</a></td><br/>
+    </tr>
+</div>
+
+<br/>
+<a th:href="@{/admin/sendEmail}"><button>Wyczyść filtry</button></a>
+<br/>
+<br/>
+<form th:action="@{/admin/sendEmail}" method="post">
+    <span>Wiadomość zostanie wysłana do wyświetlanej grupy użytkowników!</span>
+    <input type="text" th:value="*{mess}" name="mess" >
+<input type="submit" value="Wyślij wiadomość">
+</form>
+<a th:href="@{/admin}"><button>Wyślij wiadomość</button></a>
+<br/>
+<br/>
+<a th:href="@{/admin}"><button>Wróć do panelu</button></a>
+</body>
+</html>

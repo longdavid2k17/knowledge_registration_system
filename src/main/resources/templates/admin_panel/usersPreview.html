@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Uczestnicy wydarzeń</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th> ID </th>
+        <th> Data </th>
+        <th> Imię </th>
+        <th> Adres email </th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:if="${userList.empty}">
+        <td colspan="5"> Brak użytkowników </td>
+    </tr>
+    <tr th:each="user : ${userList}">
+        <td><span th:text="${user.userId}">ID </span></td>
+        <td><span th:text="${user.createdAt}">Data </span></td>
+        <td><span th:text="${user.name}">ID użytkownika </span></td>
+        <td><span th:text="${user.email}">ID wydarzenia</span></td>
+    </tr>
+    </tbody>
+</table>
+<br/>
+<br/>
+<a th:href="@{/admin}"><button>Wróć do panelu</button></a>
+</body>
+</html>

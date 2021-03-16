@@ -3,6 +3,7 @@ package register.system.knowledgeregistersystem.data;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.core.PreparedStatementCreatorFactory;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Repository;
@@ -10,10 +11,14 @@ import register.system.knowledgeregistersystem.Models.Scholarship;
 import register.system.knowledgeregistersystem.Models.ScholarshipRegistration;
 import register.system.knowledgeregistersystem.Models.User;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public class RegistrationRepositoryImpl implements RegistrationRepository
@@ -44,6 +49,41 @@ public class RegistrationRepositoryImpl implements RegistrationRepository
         int count = jdbc.queryForObject(sql, new Object[] { user.getUserId() }, Integer.class);
         boolean exists = count > 0;
         return exists;
+    }
+
+    @Override
+    public List<ScholarshipRegistration> getAll()
+    {
+        return jdbc.query("select * from REGISTRATIONS",new RowMapper<ScholarshipRegistration>()
+        {
+            @Override
+            public ScholarshipRegistration mapRow(ResultSet rs, int rownumber) throws SQLException
+            {
+                ScholarshipRegistration scholarship=new ScholarshipRegistration();
+                scholarship.setRegistrationId(rs.getInt(1));
+                scholarship.setPlacedAt(rs.getDate(2));
+                scholarship.setUserId(rs.getInt(3));
+                scholarship.setScholarshipId(rs.getInt(4));
+                return scholarship;
+            }
+        });
+    }
+
+    @Override
+    public List<ScholarshipRegistration> filterByEventId(Long id) {
+        return jdbc.query("select * from REGISTRATIONS where scholarshipId="+id,new RowMapper<ScholarshipRegistration>()
+        {
+            @Override
+            public ScholarshipRegistration mapRow(ResultSet rs, int rownumber) throws SQLException
+            {
+                ScholarshipRegistration scholarship=new ScholarshipRegistration();
+                scholarship.setRegistrationId(rs.getInt(1));
+                scholarship.setPlacedAt(rs.getDate(2));
+                scholarship.setUserId(rs.getInt(3));
+                scholarship.setScholarshipId(rs.getInt(4));
+                return scholarship;
+            }
+        });
     }
 
     private long getScholarshipId(String scholarshipName)
