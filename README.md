@@ -4,6 +4,15 @@ We have also admin panel which allows you to add admin account, see details of c
 
 Project is using only Polish (that's my native language)
 
+
+# how to run?
+Link to bulded JAR file (without SMTP account credits):
+https://mega.nz/folder/vNIXzKQR#-T-d98_PDXf0IaGws2KHmA
+
+After download file , run command line in your destination, and write down:
+"java -jar knowledge-register-system-0.0.1-SNAPSHOT.jar"
+Then open localhost:8080 and have fun!
+
 # tech stack
 * JAVA 11
 * Spring/ Spring Boot
