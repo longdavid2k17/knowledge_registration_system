@@ -49,9 +49,13 @@ public class AdminPanelController
     @GetMapping("/admin")
     public String logged(Principal principal, Model model)
     {
-        if(principal.getName()==null)
+        if(principal==null)
         {
-            return "admin_panel/error";
+            return "redirect:/login";
+        }
+        else if(principal.getName()==null)
+        {
+            return "redirect:/";
         }
         else
         {

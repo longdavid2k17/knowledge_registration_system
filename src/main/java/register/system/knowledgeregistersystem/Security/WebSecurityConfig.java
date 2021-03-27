@@ -41,8 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
 
         http
                 .authorizeRequests()
-                .antMatchers("/login").authenticated()
-                .and()
+                .antMatchers("/admin/*").hasRole("ADMIN").and()
                 .formLogin().defaultSuccessUrl("/admin")
                 .and()
         .httpBasic()
@@ -55,29 +54,5 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter
         // http.authorizeRequests().antMatchers("/css/**", "/js/**", "/images/**").permitAll();
         //albo to
         //http.authorizeRequests().antMatchers("/resources/**").permitAll().anyRequest().permitAll();
-        /*http.csrf().disable();
-        http.headers().disable();
-
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/mysql").permitAll()
-                .antMatchers("/spring").permitAll()
-                .antMatchers("/patterns").permitAll()
-                .antMatchers("/algorithms").permitAll()
-                .antMatchers("/htmlcss").permitAll()
-                .antMatchers("/hibernate").permitAll()
-                .antMatchers("/admin/addAdmin").hasAnyAuthority("ADMIN")
-                .antMatchers("/admin/events").hasAnyAuthority("ADMIN")
-                .antMatchers("/admin").hasAnyAuthority("ADMIN")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin().defaultSuccessUrl("/admin").permitAll()
-                .and()
-                .logout().logoutUrl("/admin/logout").permitAll()
-                .logoutSuccessUrl("/")
-                .and()
-                .exceptionHandling().accessDeniedPage("/403")
-        ;*/
-
     }
 }
