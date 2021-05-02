@@ -17,7 +17,7 @@ Then open localhost:8080 and have fun!
 * JAVA 11
 * Spring/ Spring Boot
 * Spring Security (at some stage ofc)
-* Thymleaf
+* Thymeleaf
 * Java Mail
 * Lombok
 
